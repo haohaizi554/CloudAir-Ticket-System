@@ -27,11 +27,11 @@
 
 | 首页搜索 | 航班列表 | 在线选座 |
 | :---: | :---: | :---: |
-| <img src="你的截图路径/首页.png" width="200"/> | <img src="你的截图路径/列表.png" width="200"/> | <img src="你的截图路径/选座.png" width="200"/> |
+| <img src="截图\首页.png" width="200"/> | <img src="截图/航班.png" width="200"/> | <img src="截图/座位.png" width="200"/> |
 
 | 订单管理 | 电子登机牌 | 个人中心 |
 | :---: | :---: | :---: |
-| <img src="你的截图路径/订单.png" width="200"/> | <img src="你的截图路径/二维码.png" width="200"/> | <img src="你的截图路径/我的.png" width="200"/> |
+| <img src="截图/订单.png" width="200"/> | <img src="截图/登机牌.png" width="200"/> | <img src="截图/我的.png" width="200"/> |
 
 ## 🚀 快速开始
 
