@@ -2,7 +2,7 @@
 
 <!-- 这里放你的仓库二维码，如果没有可以删掉这一段 -->
 <p align="center">
-  <img src="截图/repo_qrcode.png" width="150" alt="扫码访问仓库" title="扫码访问 GitHub 仓库"/>
+  <img src="截图/github.png" width="150" alt="扫码访问仓库" title="扫码访问 GitHub 仓库"/>
 </p>
 
 > 基于微信小程序 + 微信云开发 (Serverless) 构建的航空票务全流程演示系统。
