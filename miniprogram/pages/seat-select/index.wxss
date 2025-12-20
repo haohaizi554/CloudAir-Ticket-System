@@ -1,0 +1,160 @@
+/* pages/seat-select/index.wxss */
+
+/* 1. 全局与容器 */
+page {
+  background-color: #f6f6f6;
+  padding-bottom: 90px; /* 底部留白增加，防止遮挡 */
+}
+
+.container {
+  padding-bottom: 20px;
+}
+
+/* 2. 顶部航班信息 */
+.flight-info {
+  background-color: #0052d9;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 82, 217, 0.2);
+}
+
+.route {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.detail {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* 3. 选座区域容器 */
+.seat-area {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  width: 100%;
+}
+
+/* 机头屏幕指示条 */
+.screen {
+  background-color: #e0e0e0;
+  width: 60%; /* 稍微窄一点更像屏幕 */
+  text-align: center;
+  padding: 5px;
+  border-radius: 0 0 20px 20px;
+  color: #999;
+  font-size: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 4. 核心：座位网格布局 */
+.seat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 15px; 
+  width: 100%;
+  padding: 0 30px; 
+  box-sizing: border-box;
+}
+
+/* 5. 单个座位样式 */
+.seat-item {
+  width: 100%; 
+  /* 🔥 关键修改：高度改小，让它看起来像正方形 */
+  height: 55px; 
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #333;
+  transition: all 0.2s ease-in-out; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+/* 座位号文字 */
+.seat-item text:first-child {
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* 状态文字 (可选/已占) */
+.status-text {
+  font-size: 10px;
+  font-weight: normal;
+  margin-top: 2px;
+  color: #999;
+}
+
+/* 6. 选中状态 */
+.seat-item.selected {
+  background-color: #0052d9;
+  color: white;
+  border-color: #0052d9;
+  transform: scale(1.05); 
+  box-shadow: 0 4px 12px rgba(0, 82, 217, 0.3);
+}
+
+.seat-item.selected .status-text {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 7. 已售状态 */
+.seat-item.sold {
+  background-color: #f0f0f0;
+  color: #ccc;
+  border-color: #eee;
+  cursor: not-allowed;
+}
+
+.seat-item.sold .status-text {
+  color: #ddd;
+}
+
+/* 8. 底部操作栏 */
+.footer-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px; /* 加高一点，适配全面屏 */
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  padding-bottom: 10px; /* 适配 iPhone 底部横条 */
+  box-sizing: border-box;
+  box-shadow: 0 -4px 16px rgba(0,0,0,0.05);
+  z-index: 999;
+}
+
+.selected-info {
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+}
+
+.btn-confirm {
+  background-color: #0052d9;
+  color: white;
+  margin: 0;
+  border-radius: 25px;
+  font-size: 16px;
+  padding: 10px 30px;
+  font-weight: bold;
+}
+
+.btn-confirm.disabled {
+  background-color: #e0e0e0;
+  color: #999;
+}

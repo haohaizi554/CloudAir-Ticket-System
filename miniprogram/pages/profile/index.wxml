@@ -1,0 +1,67 @@
+<!-- pages/profile/index.wxml -->
+<view class="container">
+  
+  <!-- 顶部用户信息卡片 -->
+  <view class="user-card">
+    <view class="avatar-wrapper">
+      <!-- 微信开放能力：选择头像 -->
+      <button class="avatar-btn" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+        <image class="avatar" src="{{userInfo.avatarUrl || '../../images/user.png'}}"></image>
+      </button>
+      <view class="edit-tip">点击更换头像</view>
+    </view>
+    
+    <view class="nickname-wrapper">
+      <text class="label">昵称：</text>
+      <!-- 微信开放能力：填写昵称 -->
+      <input type="nickname" class="nickname-input" placeholder="请输入昵称" value="{{userInfo.nickName}}" bindblur="onSaveNickname"/>
+    </view>
+  </view>
+
+  <!-- 菜单列表 -->
+  <view class="menu-list">
+    <!-- 模拟支付检测功能 -->
+    <view class="menu-item" bindtap="onCheckPayment">
+      <view class="item-left">
+        <text class="icon">💰</text>
+        <text>支付安全检测</text>
+      </view>
+      <text class="arrow">></text>
+    </view>
+
+    <view class="menu-item" bindtap="onContact">
+      <view class="item-left">
+        <text class="icon">📞</text>
+        <text>联系开发者</text>
+      </view>
+      <text class="arrow">></text>
+    </view>
+
+    <view class="menu-item" bindtap="onAbout">
+      <view class="item-left">
+        <text class="icon">ℹ️</text>
+        <text>关于系统</text>
+      </view>
+      <text class="arrow">></text>
+    </view>
+  </view>
+
+  <!-- 底部版本号 -->
+  <view class="footer">
+    <text>v1.5.81 云端航空 Demo</text>
+  </view>
+
+  <view class="modal-mask" wx:if="{{showContactModal}}" bindtap="closeContactModal">
+    <view class="modal-box" catchtap="preventBubble">
+      <view class="modal-title">联系开发者</view>
+      <image 
+        src="/images/qrcode.png" 
+        class="qr-image" 
+        mode="aspectFit" 
+        show-menu-by-longpress="{{true}}"
+      ></image>
+      <view class="modal-tip">长按识别二维码添加好友</view>
+      <view class="close-btn" bindtap="closeContactModal">×</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,8 @@
+node_modules/
+.DS_Store
+unpackage/
+dist/
+npm/
+
+# 微信开发者工具私有配置 (保护隐私)
+project.private.config.json

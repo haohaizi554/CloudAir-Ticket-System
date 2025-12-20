@@ -1,0 +1,66 @@
+<view class="container">
+  <view class="bg-header">
+    <view class="title">云端航空</view>
+  </view>
+
+  <view class="ticket-card">
+    <view class="card-title">电子登机牌</view>
+    <view class="divider-line"></view>
+
+    <view class="flight-row">
+      <view class="city-col">
+        <text class="city">{{order.flight_info.origin}}</text>
+      </view>
+      <view class="icon-col">
+        <text class="plane-emoji">✈️</text>
+        <text class="flight-no">{{order.flight_info.flight_no}}</text>
+      </view>
+      <view class="city-col">
+        <text class="city">{{order.flight_info.dest}}</text>
+      </view>
+    </view>
+
+    <view class="info-box">
+      
+      <view class="row-top">
+        <view class="col-item left">
+          <text class="label">日期</text>
+          <text class="value-text">{{myDate}}</text>
+        </view>
+
+        <view class="col-item center">
+          <text class="label">座位</text>
+          <text class="seat-text">{{order.seat_no}}</text>
+        </view>
+
+        <view class="col-item right">
+          <text class="label">乘客</text>
+          <text class="value-text name-text">{{order.passenger_name || '贵宾'}}</text>
+        </view>
+      </view>
+
+      <view class="inner-divider"></view>
+
+      <view class="row-bottom">
+        <text class="label">登机时间</text>
+        <text class="big-time">{{myTime}}</text>
+      </view>
+    </view>
+
+    <view class="qr-area">
+    <view class="loading-box" wx:if="{{isQrLoading}}">
+        <view class="spinner"></view>
+        <text>生成中...</text>
+      </view>
+      <canvas 
+        class="qrcode-canvas" 
+        canvas-id="myQrcode" 
+        style="width: 200px; height: 200px;" 
+        hidden="{{isQrLoading}}"
+      />
+    </view>
+
+    <view class="tips">登机时请向工作人员出示此码</view>
+    <view class="tips-sub">截图保存到相册</view>
+  </view>
+</view>

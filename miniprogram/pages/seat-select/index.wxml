@@ -1,0 +1,41 @@
+<!-- pages/seat-select/index.wxml -->
+<view class="container">
+  <!-- 顶部航班信息 -->
+  <view class="flight-info">
+    <view class="route">{{flight.origin}} ✈️ {{flight.dest}}</view>
+    <view class="detail">{{flight.flight_no}} | {{flight.dept_time}}</view>
+  </view>
+
+  <!-- 座位图区域 -->
+  <view class="seat-area">
+    <view class="screen">机头方向</view>
+    
+    <view class="seat-grid">
+      <block wx:for="{{seats}}" wx:key="_id">
+        <view 
+          class="seat-item {{item.status > 0 ? 'sold' : ''}} {{selectedSeat._id === item._id ? 'selected' : ''}}" 
+          bindtap="onSelectSeat" 
+          data-seat="{{item}}"
+        >
+          <text>{{item.seat_no}}</text>
+          <text class="status-text">{{item.status > 0 ? '已占' : '可选'}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="footer-bar">
+    <view class="selected-info">
+      <text wx:if="{{selectedSeat}}">已选: {{selectedSeat.seat_no}}</text>
+      <text wx:else>请选择座位</text>
+    </view>
+    <button 
+      class="btn-confirm {{!selectedSeat ? 'disabled' : ''}}" 
+      bindtap="onSubmitOrder" 
+      disabled="{{!selectedSeat}}"
+    >
+      确认下单 (¥{{flight.price}})
+    </button>
+  </view>
+</view>

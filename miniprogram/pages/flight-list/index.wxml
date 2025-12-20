@@ -1,0 +1,64 @@
+<view class="container">
+  
+  <view class="status-bar">
+    <view class="status-left">
+      <view class="main-title">{{displayRoute}}</view>
+      <view class="sub-info">
+        <text class="date-tag">{{displayDate}}</text>
+        <text wx:if="{{displayKeyword}}" class="keyword-tag">搜: {{displayKeyword}}</text>
+      </view>
+    </view>
+    <view class="status-icon">✈️</view>
+  </view>
+
+  <view class="list-container">
+    
+    <block wx:if="{{flightList.length > 0}}">
+      <view class="flight-card" wx:for="{{flightList}}" wx:key="_id">
+        
+        <view class="card-top">
+          <view class="time-col">
+            <text class="date-label" wx:if="{{!searchParams.date}}">{{item.simple_date}}</text>
+            
+            <text class="time">{{item.simple_dept_time}}</text>
+            <text class="airport">{{item.origin}}</text>
+          </view>
+          
+          <view class="arrow-col">
+            <text class="duration">直飞</text>
+            <view class="line-box">
+              <view class="dot"></view>
+              <view class="line"></view>
+              <view class="plane-icon">✈</view>
+            </view>
+            <text class="plane-type">{{item.plane_type}}</text>
+          </view>
+          
+          <view class="time-col">
+            <view class="placeholder-space" wx:if="{{!searchParams.date}}"></view>
+            
+            <text class="time">{{item.simple_arr_time}}</text>
+            <text class="airport">{{item.dest}}</text>
+          </view>
+        </view>
+
+        <view class="card-bottom">
+          <view class="price">
+            <text class="symbol">¥</text>
+            <text class="amount">{{item.price}}</text>
+          </view>
+          <button class="btn-book" bindtap="onBook" data-flight="{{item}}">预订</button>
+        </view>
+      </view>
+    </block>
+
+    <block wx:else>
+      <view class="empty-state" wx:if="{{!loading}}">
+        <text class="empty-icon">🛫</text>
+        <text>抱歉，没有找到符合条件的航班</text>
+        <text class="sub-text">尝试减少筛选条件试试</text>
+      </view>
+    </block>
+
+  </view>
+</view>

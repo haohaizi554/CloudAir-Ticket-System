@@ -1,0 +1,77 @@
+<!-- pages/order-list/index.wxml -->
+<view class="container">
+  
+  <block wx:if="{{orderList.length > 0}}">
+    <view class="order-card" wx:for="{{orderList}}" wx:key="_id">
+      
+      <!-- 头部：订单号与状态 -->
+      <view class="card-header">
+        <view class="user-info-small">
+          <!-- 优先显示当前缓存的头像，如果没有则显示订单快照的头像 -->
+          <image 
+            class="small-avatar" 
+            src="{{currentUser.avatarUrl || item.passenger_avatar}}" 
+            mode="aspectFill"
+          ></image>
+          <text class="passenger-name">
+            {{currentUser.nickName || item.passenger_name}}
+          </text>
+        </view>
+        
+        <text class="status-tag {{item.status == 1 ? 'paid' : 'refunded'}}">
+          {{item.status == 1 ? '已支付' : '已退票'}}
+        </text>
+      </view>
+
+      <!-- 内容：航班信息 -->
+      <view class="card-body">
+        <view class="flight-row">
+          <text class="city">{{item.flight_info.origin}}</text>
+          <text class="arrow">--------✈️--------</text>
+          <text class="city">{{item.flight_info.dest}}</text>
+        </view>
+        <view class="info-row">
+          <text>航班: {{item.flight_info.flight_no}}</text>
+          <text>日期: {{item.flight_info.dept_time}}</text>
+        </view>
+        <view class="seat-info">
+          座位号：<text class="seat-no">{{item.seat_no}}</text>
+        </view>
+      </view>
+
+      <!-- 底部：操作栏 -->
+      <view class="card-footer">
+        <text class="price">¥{{item.price}}</text>
+        
+        <view class="btn-group">
+          <!-- 出示登机码按钮 (仅已支付状态显示) -->
+          <button 
+            wx:if="{{item.status == 1}}" 
+            class="btn-code" 
+            size="mini" 
+            bindtap="onShowCode" 
+            data-order="{{item}}"
+          >
+            出示登机码
+          </button>
+
+          <!-- 退票按钮 (仅已支付状态显示) -->
+          <button 
+            wx:if="{{item.status == 1}}" 
+            class="btn-refund" 
+            size="mini" 
+            bindtap="onRefund" 
+            data-order="{{item}}"
+          >
+            申请退票
+          </button>
+        </view> 
+      </view> 
+    </view> 
+  </block>
+
+  <!-- 空状态 -->
+  <view wx:else class="empty-state">
+    <text>📭 您还没有订单</text>
+  </view>
+</view>
