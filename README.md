@@ -1,5 +1,10 @@
 # ✈️ 云端航空 (Cloud Air) - 在线票务预定系统
 
+<!-- 这里放你的仓库二维码，如果没有可以删掉这一段 -->
+<p align="center">
+  <img src="截图/repo_qrcode.png" width="150" alt="扫码访问仓库" title="扫码访问 GitHub 仓库"/>
+</p>
+
 > 基于微信小程序 + 微信云开发 (Serverless) 构建的航空票务全流程演示系统。
 > 软件工程课程实训大作业。
 
@@ -23,11 +28,33 @@
 *   **核心逻辑**：JavaScript (ES6+), Promise, Async/Await
 *   **工具库**：weapp-qrcode (二维码生成)
 
+## 📂 项目目录结构
+
+```text
+CloudAir-Ticket-System/
+├── miniprogram/                  // 小程序核心代码目录
+│   ├── images/                   // 图片资源（Banner、图标、二维码）
+│   ├── pages/                    // 页面文件
+│   │   ├── index/                // 首页（混合搜索、轮播图）
+│   │   ├── flight-list/          // 航班列表页（正则查询、动态渲染）
+│   │   ├── seat-select/          // 选座页（CSS Grid布局、事务锁座）
+│   │   ├── order-list/           // 订单页（状态流转、退票逻辑）
+│   │   ├── profile/              // 个人中心（登录同步、弹窗交互）
+│   │   └── boarding-pass/        // 电子登机牌（Canvas绘图）
+│   ├── utils/                    // 工具类（二维码生成库）
+│   ├── app.js                    // 全局逻辑（云环境初始化、数据脚本）
+│   ├── app.json                  // 全局配置（页面路由、TabBar）
+│   └── app.wxss                  // 全局样式
+├── cloudfunctions/               // 云函数根目录（预留）
+├── project.config.json           // 项目工程配置文件
+└── README.md                     // 项目说明文档
+```
+
 ## 📸 系统截图
 
 | 首页搜索 | 航班列表 | 在线选座 |
 | :---: | :---: | :---: |
-| <img src="截图\首页.png" width="200"/> | <img src="截图/航班.png" width="200"/> | <img src="截图/座位.png" width="200"/> |
+| <img src="截图/首页.png" width="200"/> | <img src="截图/航班.png" width="200"/> | <img src="截图/座位.png" width="200"/> |
 
 | 订单管理 | 电子登机牌 | 个人中心 |
 | :---: | :---: | :---: |
