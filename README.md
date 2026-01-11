@@ -75,7 +75,3 @@ CloudAir-Ticket-System/
     *   在云控制台创建 `flights`, `seats`, `orders`, `users` 四个集合。
     *   修改数据库权限为“所有用户可读，仅创建者可读写”。
     *   (可选) 使用项目中的脚本注入测试数据。
-
-## 📄 许可证
-
-MIT License
